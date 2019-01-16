@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import logo from './logo.svg'
+import './App.css'
+import PropTypes from 'prop-types'
+import Homepage  from './component/pages/Homepage'
+import Loginpage from './component/pages/Loginpage'
+import SignUpPage from './component/pages/SignupPage'
+import DashboardPage from './component/pages/DashboardPage'
+import ConfirmationPage from './component/pages/ConfirmationPage'
+import UserRoute from './component/routes/UserRoutes'
+import GuestRoute from './component/routes/GuestRoute'
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+const App= ()=>(
+      <div className="ui container">
+      <Route        exact path="/"           component = {Homepage}/>
+      <Route        exact path="/confirmation/:token" component={ConfirmationPage} />
+      <GuestRoute   exact path="/login"      component = {Loginpage}/>
+      <GuestRoute   exact path="/signup"     component=  {SignUpPage}/>
+      <UserRoute    exact path="/dashboard"  component =  {DashboardPage}/>
       </div>
-    );
-  }
-}
+);
 
 export default App;
